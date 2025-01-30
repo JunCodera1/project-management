@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@mui/x-data-grid": "^7.24.1",
+    "@reduxjs/toolkit": "^2.5.1",
     "lucide-react": "^0.474.0",
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
