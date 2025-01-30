@@ -8,15 +8,15 @@ type Props = {};
 
 const Navbar = (props: Props) => {
     const dispatch = useAppDispatch();
-    const isSidebarCollapse = useAppSelector((state) => state.global.isSidebarCollapsed);
+    const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
     const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
     return (
         <div className='flex items-center justify-between bg-white px-4 py-3 dark:bg-black'>
             {/* Search Bar */}
             <div className='flex items-center gap-8'>
-                {!isSidebarCollapse ? null : (
-                    <button onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapse))}>
+                {!isSidebarCollapsed ? null : (
+                    <button onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}>
                         <Menu className='h-8 w-8 dark:text-white' />
                     </button>
                 )}
