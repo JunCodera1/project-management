@@ -1,7 +1,18 @@
 'use client';
 
 import { useAppDispatch, useAppSelector } from '@/app/redux';
-import { Home, Icon, LockIcon, LucideIcon, X } from 'lucide-react';
+import {
+    Briefcase,
+    Home,
+    Icon,
+    LockIcon,
+    LucideIcon,
+    Search,
+    Settings,
+    User,
+    Users,
+    X,
+} from 'lucide-react';
 import Link from 'next/link';
 
 import Image from 'next/image';
@@ -51,6 +62,11 @@ const Sidebar = () => {
                 {/* NAVBAR LINKS */}
                 <nav className='z-10 w-full'>
                     <SidebarLink icon={Home} label='Home' href='/' />
+                    <SidebarLink icon={Briefcase} label='Timeline' href='/timeline' />
+                    <SidebarLink icon={Search} label='Search' href='/' />
+                    <SidebarLink icon={Settings} label='Settings' href='/settings' />
+                    <SidebarLink icon={User} label='Users' href='/users' />
+                    <SidebarLink icon={Users} label='Team' href='/teams' />
                 </nav>
             </div>
         </div>
@@ -67,18 +83,13 @@ interface SidebarLinkProps {
 const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
     const pathname = usePathname();
     const isActive = pathname === href || (pathname === '/' && href === '/dashboard');
-    const screenWidth = window.innerWidth;
-
-    const dispatch = useAppDispatch();
-    const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
-    const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
     return (
         <Link href={href} className='w-full'>
             <div
                 className={`relative flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
                     isActive ? 'bg-gray-100 text-white dark:bg-gray-600' : ''
-                } `}
+                } justify-start px-8 py-3`}
             >
                 {isActive && (
                     <div className='absolute left-0 top-0 h-[100%] w-[5px] bg-blue-200'></div>
