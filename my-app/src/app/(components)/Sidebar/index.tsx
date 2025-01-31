@@ -124,7 +124,7 @@ interface SidebarLinkProps {
     // isCollapsed: boolean;
 }
 
-const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
+const  SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
     const pathname = usePathname();
     const isActive = pathname === href || (pathname === '/' && href === '/dashboard');
 
