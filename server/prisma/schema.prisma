@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -20,28 +21,28 @@ model User {
   profilePictureUrl String?
   teamId            Int?
 
-  authoredTasks  Task[]           @relation("TaskAuthor")
-  assignedTasks  Task[]           @relation("TaskAssignee")
-  taskAssignment TaskAssignment[]
-  attackments    Attachment[]
-  comments       Comment[]
-  team           Team?            @relation(fields: [teamId], references: [id])
+  authoredTasks   Task[]           @relation("TaskAuthor")
+  assignedTasks   Task[]           @relation("TaskAssignee")
+  taskAssignments TaskAssignment[]
+  attachments     Attachment[]
+  comments        Comment[]
+  team            Team?            @relation(fields: [teamId], references: [id])
 }
 
 model Team {
   id                   Int           @id @default(autoincrement())
-  teamname             String
+  teamName             String
   productOwnerUserId   Int?
   projectManagerUserId Int?
   projectTeams         ProjectTeam[]
-  User                 User[]
+  user                 User[]
 }
 
 model Project {
   id           Int           @id @default(autoincrement())
   name         String
   description  String?
-  startTime    DateTime?
+  startDate    DateTime?
   endDate      DateTime?
   tasks        Task[]
   projectTeams ProjectTeam[]
@@ -51,8 +52,8 @@ model ProjectTeam {
   id        Int     @id @default(autoincrement())
   teamId    Int
   projectId Int
-  team      Team?   @relation(fields: [teamId], references: [id])
-  Project   Project @relation(fields: [projectId], references: [id])
+  team      Team    @relation(fields: [teamId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
 }
 
 model Task {
